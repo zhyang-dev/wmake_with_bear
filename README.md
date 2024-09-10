@@ -40,3 +40,10 @@ The usage of `bwmake` is basically the same as `wmake`, but `bwmake` can generat
 Using `clangd` as the language server in VSCode, you can see that code suggestions work correctly.
 
 ![](./assets/vscode_clangd_icoFoam_bwmake.png)
+
+Tested environments:
+- OpenFOAM-v2406 on Ubuntu-24.04 with bear 3.1.3
+- OpenFOAM-v2012 on Ubuntu-20.04 with bear 2.4.3
+- OpenFOAM-v2012 on Ubuntu-16.04 with bear 2.1.5
+- OpenFOAM-11 on Ubuntu-20.04 with bear 2.4.3
+- OpenFOAM-6 on Ubuntu-18.04 with bear 2.3.11

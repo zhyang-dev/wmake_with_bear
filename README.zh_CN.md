@@ -38,3 +38,10 @@ bwmake的使用跟wmake使用基本相同，但是bwmake能够生成`compile_com
 在VSCode中使用clangd作为language server，可以发现能够正常代码提示。
 
 ![](./assets/vscode_clangd_icoFoam_bwmake.png)
+
+已测试环境：
+- OpenFOAM-v2406 on Ubuntu-24.04 with bear 3.1.3
+- OpenFOAM-v2012 on Ubuntu-20.04 with bear 2.4.3
+- OpenFOAM-v2012 on Ubuntu-16.04 with bear 2.1.5
+- OpenFOAM-11 on Ubuntu-20.04 with bear 2.4.3
+- OpenFOAM-6 on Ubuntu-18.04 with bear 2.3.11
