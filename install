@@ -1,0 +1,25 @@
+#!/bin/bash
+# check bear
+if bear_version="$(bear --version 2>&1)"
+then
+    echo "bear version: $bear_version"
+else
+    echo "bear not found"
+    exit 1
+fi
+# check openfoam environment
+if [ -n "$WM_PROJECT_VERSION" ]
+then
+    echo "openfoam version: OpenFOAM-$WM_PROJECT_VERSION"
+else
+    echo "openfoam not found"
+    exit 1
+fi
+
+# create wmake_with_bear and bwmake
+cd $WM_PROJECT_DIR/wmake
+[ -e wmake_with_bear ] && { echo "wmake_with_bear exists, exiting..."; exit 1; }
+cp -i wmake wmake_with_bear
+sed -i 's/"make"/"bear -- make"/g' wmake_with_bear
+ln -s wmake_with_bear bwmake || { echo "link bwmake exists, exiting."; exit 1; }
+echo "done."
