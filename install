@@ -2,6 +2,7 @@
 # check bear
 if bear_version="$(bear --version 2>&1)"
 then
+    bear_version="$(echo "$bear_version" | sed -ne '1{ s/^[^0-9]*\([1-9]\)/\1/p }')"
     echo "bear version: $bear_version"
 else
     echo "bear not found"
@@ -20,6 +21,20 @@ fi
 cd $WM_PROJECT_DIR/wmake
 [ -e wmake_with_bear ] && { echo "wmake_with_bear exists, exiting..."; exit 1; }
 cp -i wmake wmake_with_bear
-sed -i 's/"make"/"bear -- make"/g' wmake_with_bear
+case "$bear_version" in
+(2.*)
+    # Version 2
+    sed -i 's/"make"/"bear make"/g' wmake_with_bear
+    ;;
+([3-9].* | [1-9][0-9].*)
+    # Version 3 or newer
+    sed -i 's/"make"/"bear -- make"/g' wmake_with_bear 
+    ;;
+(*)
+    # Unknown version
+    echo "Unknown version: $bear_version"
+    exit 1
+    ;;
+esac
 ln -s wmake_with_bear bwmake || { echo "link bwmake exists, exiting."; exit 1; }
 echo "done."
