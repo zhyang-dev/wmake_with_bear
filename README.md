@@ -22,7 +22,7 @@ The installation is straightforward:
 ```bash
 # Activate your OpenFOAM environment, then clone the project and run the install script
 $ git clone --depth 1 https://github.com/zhyang-dev/wmake_with_bear.git
-$ cd wmake_with_bear && chmod +x install && ./install
+$ cd wmake_with_bear && ./install
 ```
 
 ### Usage
